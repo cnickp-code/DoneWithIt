@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Image, StyleSheet, Text } from 'react-native';
 
+import colors from '../../config/colors';
+
 function Card(props) {
     return (
         <View style={styles.container}>
@@ -24,16 +26,17 @@ function Card(props) {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
-        width: '90%',
+        width: '100%',
         height: 300,
         borderRadius: 20,
         justifyContent: 'center',
         borderTopEndRadius: 16,
         borderTopStartRadius: 16,
+        marginVertical: 20,
+        overflow: 'hidden',
     },
     inner: {
         backgroundColor: '#fff',
-        
         width: '100%',
         padding: 20,
         flex: 1,
@@ -49,13 +52,11 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 18,
-        lineHeight: 18,
-        marginBottom: 15,
+        marginBottom: 7,
     },
     subTitle: {
         fontSize: 18,
-        color: 'green',
-        lineHeight: 18,
+        color: colors.secondary,
     }
 })
 

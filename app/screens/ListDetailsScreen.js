@@ -1,5 +1,8 @@
 import React from 'react';
 import { Image, View, Text, StyleSheet } from 'react-native';
+import ListItem from '../components/ListItem/ListItem';
+
+import colors from '../config/colors';
 
 function ListDetails(props) {
     return (
@@ -17,7 +20,11 @@ function ListDetails(props) {
                     {props.subTitle}
                 </Text>
             </View>
-
+            <ListItem 
+                image={props.image}
+                title={props.title}
+                description={props.description}
+            />
         </View>
     );
 }
@@ -31,6 +38,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         width: '100%',
         padding: 20,
+        marginBottom: 50,
     },
     img: {
         width: '100%',
@@ -45,7 +53,7 @@ const styles = StyleSheet.create({
     },
     subTitle: {
         fontSize: 18,
-        color: 'green',
+        color: colors.secondary,
         lineHeight: 18,
     }
 })

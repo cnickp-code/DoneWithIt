@@ -4,6 +4,11 @@ import AppButton from '../components/AppButton/AppButton';
 import colors from '../config/colors';
 
 function WelcomeScreen(props) {
+
+    const handlePress = () => {
+        console.log('Tapped');
+    }
+
     return (
         <ImageBackground
             style={styles.background}
@@ -15,8 +20,8 @@ function WelcomeScreen(props) {
                 <Text style={styles.tagline}>Sell What You Don't Need</Text>
             </View>
 
-            <AppButton title={'Login'} color={colors.primary} />
-            <AppButton title={'Register'} color={colors.secondary}/>
+            <AppButton title={'Login'} color={colors.primary} onPress={handlePress}/>
+            <AppButton title={'Register'} color={colors.secondary} onPress={handlePress}/>
         </ImageBackground>
     );
 }
@@ -38,7 +43,7 @@ const styles = StyleSheet.create({
     },
     tagline: {
         marginTop: 20,
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: 'bold',
     }
 })
