@@ -20,13 +20,15 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: colors.primary,
         fontFamily: 'Roboto',
-        width: '90%',
+        width: '100%',
         height: 60,
         padding: 15,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 35,
-        margin: 10,
+        marginVertical: 10,
+        marginLeft: 'auto',
+        marginRight: 'auto',
         elevation: 5,
     },
     buttonText: {

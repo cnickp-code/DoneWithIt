@@ -19,17 +19,18 @@ function ListItem(props) {
                 underlayColor={colors.light}
                 onPress={props.onPress}>
                 <View style={styles.profileContainer}>
-                    <Image
+                    {props.IconComponent}
+                    {props.image && <Image
                         style={styles.profileImg}
                         source={props.image}
-                    />
+                    />}
                     <View style={styles.profileInner}>
-                        <Text style={styles.name}>
+                        <Text style={styles.title}>
                             {props.title}
                         </Text>
-                        <Text style={styles.listings}>
+                        {props.description && <Text style={styles.listings}>
                             {props.description}
-                        </Text>
+                        </Text>}
                     </View>
                 </View>
             </TouchableHighlight>
@@ -39,15 +40,20 @@ function ListItem(props) {
 
 const styles = StyleSheet.create({
     profileContainer: {
+        backgroundColor: colors.white,
         flexDirection: 'row',
         justifyContent: 'flex-start',
-        padding: 15,
+        alignItems: 'center',
+        padding: 10,
     },
     profileInner: {
-        width: '50%',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        marginLeft: 10
     },
-    name: {
-        fontSize: 16,
+    title: {
+        fontSize: 18,
         fontWeight: '500',
     },
     listings: {
@@ -59,7 +65,6 @@ const styles = StyleSheet.create({
         height: 70,
         borderRadius: 70,
         marginLeft: 10,
-        marginRight: 10,
     },
 })
 

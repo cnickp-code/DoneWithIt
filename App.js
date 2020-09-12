@@ -1,25 +1,47 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  ScrollView
+  ScrollView,
+  TextInput,
+  Switch
 } from 'react-native';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import ViewImageScreen from './app/screens/ViewImageScreen';
 import MessagesScreen from './app/screens/MessagesScreen';
 import ListDetailsScreen from './app/screens/ListDetailsScreen';
+import MyAccountScreen from './app/screens/MyAccountScreen';
+import Screen from './app/components/Screen/Screen';
 
 import AppText from './app/components/AppText/AppText';
 import AppButton from './app/components/AppButton/AppButton';
 import Card from './app/components/Card/Card';
+import Icon from './app/components/Icon/Icon';
 import ListDetails from './app/components/ListDetails/ListDetails';
+import ListItem from './app/components/ListItem/ListItem';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import ListingsScreen from './app/screens/ListingsScreen';
+import AppTextInput from './app/components/AppTextInput/AppTextInput';
+import AppPicker from './app/components/AppPicker/AppPicker';
+import LoginScreen from './app/screens/LoginScreen';
 
 // <Heading>My Heading</Heading>
+
+const categories = [
+  { label: 'Furniture', value: 1}, 
+  { label: 'Clothing', value: 2}, 
+  { label: 'Cameras', value: 3}, 
+]
+
 export default function App() {
+
+  const [firstName, setFirstName] = useState('');
+  const [isNew, setIsNew] = useState(false);
+  const [category, setCategory] = useState();
 
   return (
     // <WelcomeScreen />
@@ -55,7 +77,44 @@ export default function App() {
 
     // <ViewImageScreen />
 
-    <MessagesScreen />
+    // <MessagesScreen />
+    // <MyAccountScreen />
+
+    // <Screen>
+    //   <ListItem 
+    //     title="My title" 
+    //     ImageComponent={<Icon name="email" />}
+    //   />
+    // </Screen>
+    // <ListingsScreen />
+
+    // <Screen>
+    //   <AppTextInput 
+    //     icon="email"
+    //     placeholder="Username" 
+    //   />
+    // </Screen>
+
+    // Styles for android make it on right. IOS = left
+    // <Screen>
+    //   <Switch 
+    //     value={isNew} 
+    //     onValueChange={newValue => setIsNew(newValue)} />
+    // </Screen>
+
+    // <Screen>
+    //   <AppPicker 
+    //     items={categories} 
+    //     icon="apps" 
+    //     placeholder="Category" 
+    //     selectedItem={category}
+    //     onSelectItem={item => setCategory(item)}
+    //   />
+    //   <AppTextInput icon="email" placeholder="Email" />
+    // </Screen>
+
+    <LoginScreen />
+
   );
 }
 
