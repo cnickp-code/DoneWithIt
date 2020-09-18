@@ -17,9 +17,87 @@ const validationSchema = Yup.object().shape({
 })
 
 const categories = [
-    { label: 'Furniture', value: 1 },
-    { label: 'Clothing', value: 2 },
-    { label: 'Cameras', value: 3 },
+    { 
+        label: 'Furniture', 
+        value: 1,
+        icon: {
+            name: 'floor-lamp',
+            size: 80,
+            backgroundColor: '#fc5c65'
+        } 
+    },
+    { 
+        label: 'Clothing', 
+        value: 2,
+        icon: {
+            name: 'shoe-heel',
+            size: 80,
+            backgroundColor: '#2bcbba'
+        }  
+    },
+    { 
+        label: 'Cameras', 
+        value: 3,
+        icon: {
+            name: 'camera',
+            size: 80,
+            backgroundColor: '#fed330'
+        } 
+    },
+    { 
+        label: 'Cars', 
+        value: 4,
+        icon: {
+            name: 'car',
+            size: 80,
+            backgroundColor: '#fd9644'
+        }  
+    },
+    { 
+        label: 'Games', 
+        value: 5,
+        icon: {
+            name: 'cards',
+            size: 80,
+            backgroundColor: '#26de81'
+        } 
+    },
+    { 
+        label: 'Sports', 
+        value: 6,
+        icon: {
+            name: 'basketball',
+            size: 80,
+            backgroundColor: '#45aaf2'
+        } 
+    },
+    { 
+        label: 'Movies & Music', 
+        value: 7,
+        icon: {
+            name: 'headphones',
+            size: 80,
+            backgroundColor: '#4b7bec'
+        }  
+    },
+    { 
+        label: 'Books', 
+        value: 8,
+        icon: {
+            name: 'book',
+            size: 80,
+            backgroundColor: 'purple'
+        } 
+    },
+    { 
+        label: 'Other', 
+        value: 9,
+        icon: {
+            name: 'camera',
+            size: 80,
+            backgroundColor: '#fed330'
+        } 
+    },
 ]
 
 function ListingEditScreen(props) {
@@ -41,6 +119,7 @@ function ListingEditScreen(props) {
                     placeholder="Price"
                     keyboardType="numeric"
                     name="price"
+                    width="40%"
                 />
 
 
@@ -48,6 +127,8 @@ function ListingEditScreen(props) {
                     items={categories} 
                     placeholder="Category" 
                     name="category"
+                    width="50%"
+                    numberOfColumns={3}
                 />
                 <AppFormField
                     autoCapitalize="none"

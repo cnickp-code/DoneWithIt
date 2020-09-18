@@ -12,10 +12,10 @@ function Card(props) {
                 source={props.image}
             />
             <View style={styles.inner}>
-                <Text style={styles.title}>
+                <Text style={styles.title} numberOfLines={1}>
                     {props.title}
                 </Text>
-                <Text style={styles.subTitle}>
+                <Text style={styles.subTitle} numberOfLines={2}>
                     {props.subTitle}
                 </Text>
             </View>
@@ -51,10 +51,12 @@ const styles = StyleSheet.create({
         marginBottom: -16,
     },
     title: {
+        flex: 1,
         fontSize: 18,
         marginBottom: 7,
     },
     subTitle: {
+        flex: 1,
         fontSize: 18,
         color: colors.secondary,
     }
