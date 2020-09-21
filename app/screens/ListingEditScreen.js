@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
+import * as Location from 'expo-location';
 
 import Screen from '../components/Screen/Screen';
 
@@ -8,12 +9,15 @@ import AppForm from '../components/AppForm/AppForm';
 import AppFormField from '../components/AppFormField/AppFormField';
 import SubmitButton from '../components/SubmitButton/SubmitButton';
 import AppFormPicker from '../components/AppFormPicker/AppFormPicker';
+import FormImagePicker from '../components/FormImagePicker/FormImagePicker';
+import useLocation from '../hooks/useLocation';
 
 const validationSchema = Yup.object().shape({
     title: Yup.string().required().min(1).label('Title'),
     price: Yup.number().required().min(1).max(10000).label('Price'),
     category: Yup.string().required().nullable().label('Category'),
-    description: Yup.string().label('Description')
+    description: Yup.string().label('Description'),
+    images: Yup.array().min(1, "Please select at least one image") // second arg = msg displayed if violated
 })
 
 const categories = [
@@ -101,13 +105,39 @@ const categories = [
 ]
 
 function ListingEditScreen(props) {
+    // const [location, setLocation] = useState();
+
+    // const getLocation = async () => {
+    //     const { granted } = await Location.requestPermissionsAsync();
+    //     if(!granted) {
+    //         return;
+    //     } 
+
+    //     const { coords: { latitude, longitude } } = await Location.getLastKnownPositionAsync(); // Less accurate but moreefficient than currentknownposition
+    //     setLocation({ latitude, longitude });
+
+    // }
+
+    // useEffect(() => {
+    //     getLocation();
+    // }, [])
+
+    const location = useLocation();
+
     return (
         <Screen style={styles.container}>
             <AppForm
-                initialValues={{ title: '', price: '', category: null, description: '' }}
-                onSubmit={values => console.log(values)}
+                initialValues={{ 
+                    title: '', 
+                    price: '', 
+                    category: null, 
+                    description: '', 
+                    images: [] 
+                }}
+                onSubmit={values => console.log(location)}
                 validationSchema={validationSchema}
             >
+                <FormImagePicker name="images" />
                 <AppFormField
                     maxLength={255}
                     placeholder="Title"

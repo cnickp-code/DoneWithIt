@@ -32,6 +32,7 @@ import RegisterScreen from './app/screens/RegisterScreen';
 import ListingEditScreen from './app/screens/ListingEditScreen';
 
 import Test from './Test';
+import ImageInput from './app/components/ImageInput/ImageInput';
 
 // <Heading>My Heading</Heading>
 
@@ -120,7 +121,13 @@ export default function App() {
     // <LoginScreen />
     // <RegisterScreen />
     // <ListingEditScreen />
-    <Test />
+    // <Test />
+
+    // <Screen>
+    //   <ImageInput imageUri={imageUri} />
+    // </Screen>
+
+    <ListingEditScreen />
 
   );
 }
