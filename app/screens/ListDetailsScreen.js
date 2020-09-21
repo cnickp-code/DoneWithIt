@@ -5,25 +5,27 @@ import ListItem from '../components/ListItem/ListItem';
 import colors from '../config/colors';
 
 function ListDetails(props) {
+    const listing = props.route.params;
+
     return (
         <View style={styles.container}>
             <Image 
                 resizeMode='cover'
                 style={styles.img}
-                source={props.image}
+                source={listing.image}
             />
             <View style={styles.inner}>
                 <Text style={styles.title}>
-                    {props.title}
+                    {listing.title}
                 </Text>
                 <Text style={styles.subTitle}>
-                    {props.subTitle}
+                    {listing.price}
                 </Text>
             </View>
             <ListItem 
-                image={props.image}
-                title={props.title}
-                description={props.description}
+                image={require('../assets/mosh.jpg')}
+                title={"Mosh Hamedani"}
+                description={"5 Listings"}
             />
         </View>
     );

@@ -2,24 +2,27 @@ import React from 'react';
 import { View, Image, StyleSheet, Text } from 'react-native';
 
 import colors from '../../config/colors';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
-function Card(props) {
+function Card({ image, subTitle, title, onPress }) {
     return (
-        <View style={styles.container}>
-            <Image 
-                resizeMode='cover'
-                style={styles.img}
-                source={props.image}
-            />
-            <View style={styles.inner}>
-                <Text style={styles.title} numberOfLines={1}>
-                    {props.title}
-                </Text>
-                <Text style={styles.subTitle} numberOfLines={2}>
-                    {props.subTitle}
-                </Text>
+        <TouchableWithoutFeedback onPress={onPress}>
+            <View style={styles.container}>
+                <Image
+                    resizeMode='cover'
+                    style={styles.img}
+                    source={image}
+                />
+                <View style={styles.inner}>
+                    <Text style={styles.title} numberOfLines={1}>
+                        {title}
+                    </Text>
+                    <Text style={styles.subTitle} numberOfLines={2}>
+                        {subTitle}
+                    </Text>
+                </View>
             </View>
-        </View>
+        </TouchableWithoutFeedback>
     );
 }
 

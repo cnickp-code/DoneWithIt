@@ -31,8 +31,14 @@ import LoginScreen from './app/screens/LoginScreen';
 import RegisterScreen from './app/screens/RegisterScreen';
 import ListingEditScreen from './app/screens/ListingEditScreen';
 
-import Test from './Test';
+import Test from './Test'; // Image input form
+import Test2 from './Test2'; // Navigator
 import ImageInput from './app/components/ImageInput/ImageInput';
+import { NavigationContainer } from '@react-navigation/native';
+
+import AuthNavigator from './app/navigation/AuthNavigator';
+import AppNavigator from './app/navigation/AppNavigator';
+import navigationTheme from './app/navigation/navigationTheme';
 
 // <Heading>My Heading</Heading>
 
@@ -127,7 +133,14 @@ export default function App() {
     //   <ImageInput imageUri={imageUri} />
     // </Screen>
 
-    <ListingEditScreen />
+    // <ListingEditScreen />
+
+    // <Test2 />
+
+    <NavigationContainer theme={navigationTheme}>
+      {/* <AuthNavigator /> */}
+      <AppNavigator />
+    </NavigationContainer>
 
   );
 }

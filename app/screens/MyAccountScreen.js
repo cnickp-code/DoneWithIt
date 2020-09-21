@@ -13,6 +13,7 @@ import ListItem from '../components/ListItem/ListItem';
 import Icon from '../components/Icon/Icon';
 import Screen from '../components/Screen/Screen';
 
+import routes from '../navigation/routes'
 import colors from '../config/colors';
 import ListItemSeparator from '../components/ListItemSeparator/ListItemSeparator';
 
@@ -27,15 +28,16 @@ const menuItems = [
     },
     {
         id: 2,
-        title: 'My Account',
+        title: 'My Messages',
         icon: {
             name: 'email',
             backgroundColor: colors.secondary
-        }
+        },
+        targetScreen: routes.MESSAGES,
     },
 ]
 
-function MyAccountScreen(props) {
+function MyAccountScreen({ navigation }) {
     const [refreshing, setRefreshing] = useState(false)
 
     const handlePress = () => {
@@ -45,8 +47,6 @@ function MyAccountScreen(props) {
 
     return (
         <Screen>
-
-
             <View style={styles.container}>
                 <View style={styles.profileContainer}>
                     <ListItem
@@ -70,7 +70,7 @@ function MyAccountScreen(props) {
                             <ListItem
                                 title={item.title}
                                 IconComponent={<Icon name={item.icon.name} backgroundColor={item.icon.backgroundColor} />}
-                                onPress={handlePress}
+                                onPress={() => navigation.navigate(item.targetScreen)}
                             />
                         }
                         ItemSeparatorComponent={() => <ListItemSeparator />}

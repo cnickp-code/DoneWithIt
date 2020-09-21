@@ -2,8 +2,9 @@ import React from 'react';
 import { ImageBackground, StyleSheet, View, Image, Text } from 'react-native';
 import AppButton from '../components/AppButton/AppButton';
 import colors from '../config/colors';
+import { NavigationContainer } from '@react-navigation/native';
 
-function WelcomeScreen(props) {
+function WelcomeScreen({ navigation }) {
 
     const handlePress = () => {
         console.log('Tapped');
@@ -20,8 +21,8 @@ function WelcomeScreen(props) {
                 <Text style={styles.tagline}>Sell What You Don't Need</Text>
             </View>
 
-            <AppButton title={'Login'} color={colors.primary} onPress={handlePress}/>
-            <AppButton title={'Register'} color={colors.secondary} onPress={handlePress}/>
+            <AppButton title={'Login'} color={colors.primary} onPress={() => navigation.navigate('Login')}/>
+            <AppButton title={'Register'} color={colors.secondary} onPress={() => navigation.navigate('Register')}/>
         </ImageBackground>
     );
 }
