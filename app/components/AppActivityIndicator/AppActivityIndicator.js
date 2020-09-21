@@ -11,7 +11,7 @@ function AppActivityIndicator({ visible = false}) {
             autoPlay
             loop
             imageAssetsFolder={'lottie'}
-            source={require('../../../android/app/src/main/assets/lottie/loading2.json')} 
+            source={require('../../../android/app/src/main/assets/lottie/loading2/loading2.json')} 
         />
     );
 }
