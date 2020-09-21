@@ -12,14 +12,14 @@ function ListDetails(props) {
             <Image 
                 resizeMode='cover'
                 style={styles.img}
-                source={listing.image}
+                source={{ uri: listing.images[0].url }}
             />
             <View style={styles.inner}>
                 <Text style={styles.title}>
                     {listing.title}
                 </Text>
                 <Text style={styles.subTitle}>
-                    {listing.price}
+                    ${listing.price}
                 </Text>
             </View>
             <ListItem 
