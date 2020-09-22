@@ -1,5 +1,6 @@
 import React from 'react';
-import { Image, View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { Image } from 'react-native-expo-image-cache';
 import ListItem from '../components/ListItem/ListItem';
 
 import colors from '../config/colors';
@@ -9,10 +10,16 @@ function ListDetails(props) {
 
     return (
         <View style={styles.container}>
-            <Image 
+            {/* <Image 
                 resizeMode='cover'
                 style={styles.img}
                 source={{ uri: listing.images[0].url }}
+            /> */}
+            <Image
+                style={styles.img}
+                uri={listing.images[0].url}
+                preview={{ uri: listing.images[0].thumbnailUrl }}
+                tint="light"
             />
             <View style={styles.inner}>
                 <Text style={styles.title}>
@@ -22,7 +29,7 @@ function ListDetails(props) {
                     ${listing.price}
                 </Text>
             </View>
-            <ListItem 
+            <ListItem
                 image={require('../assets/mosh.jpg')}
                 title={"Mosh Hamedani"}
                 description={"5 Listings"}
@@ -47,7 +54,7 @@ const styles = StyleSheet.create({
         height: '35%',
 
     },
-    
+
     title: {
         fontSize: 20,
         lineHeight: 20,

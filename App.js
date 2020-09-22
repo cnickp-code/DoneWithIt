@@ -39,13 +39,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import AuthNavigator from './app/navigation/AuthNavigator';
 import AppNavigator from './app/navigation/AppNavigator';
 import navigationTheme from './app/navigation/navigationTheme';
+import OfflineTest from './OfflineTest';
+import OfflineNotice from './app/components/OfflineNotice/OfflineNotice';
 
 // <Heading>My Heading</Heading>
 
 const categories = [
-  { label: 'Furniture', value: 1}, 
-  { label: 'Clothing', value: 2}, 
-  { label: 'Cameras', value: 3}, 
+  { label: 'Furniture', value: 1 },
+  { label: 'Clothing', value: 2 },
+  { label: 'Cameras', value: 3 },
 ]
 
 export default function App() {
@@ -136,11 +138,14 @@ export default function App() {
     // <ListingEditScreen />
 
     // <Test2 />
+    <>
+      <OfflineNotice />
+      <NavigationContainer theme={navigationTheme}>
+        <AppNavigator />
+      </NavigationContainer>
+    </>
 
-    <NavigationContainer theme={navigationTheme}>
-      {/* <AuthNavigator /> */}
-      <AppNavigator />
-    </NavigationContainer>
+    // <OfflineTest />
 
   );
 }

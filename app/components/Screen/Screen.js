@@ -13,6 +13,7 @@ function Screen(props) {
 const styles = StyleSheet.create({
     screen: {
         paddingTop: Constants.statusBarHeight,
+        position: 'relative',
         flex: 1
     },
     view: {
