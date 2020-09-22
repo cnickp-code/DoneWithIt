@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
 import {
     View,
@@ -16,6 +16,9 @@ import Screen from '../components/Screen/Screen';
 import routes from '../navigation/routes'
 import colors from '../config/colors';
 import ListItemSeparator from '../components/ListItemSeparator/ListItemSeparator';
+import AuthContext from '../auth/context';
+import authStorage from '../auth/storage';
+import useAuth from '../hooks/useAuth';
 
 const menuItems = [
     {
@@ -39,28 +42,31 @@ const menuItems = [
 
 function MyAccountScreen({ navigation }) {
     const [refreshing, setRefreshing] = useState(false)
+    // const { user, setUser } = useContext(AuthContext);
+    const { user, setUser, logout } = useAuth();
 
-    const handlePress = () => {
-        console.log('Tapped')
-        Vibration.vibrate(5)
+    const handleLogout = () => {
+        // setUser(null);
+        // authStorage.removeToken();
+        logout();
     }
 
     return (
         <Screen>
             <View style={styles.container}>
-                <View style={styles.profileContainer}>
-                    <ListItem
-                        image={require('../assets/mosh.jpg')}
-                        title={'Mosh Hamedani'}
-                        description={'programmingwithmosh@gmail.com'}
-                        onPress={handlePress}
-                    />
-                    {/* <Image style={styles.img} source={require('../assets/mosh.jpg')} />
-                <View style={styles.innerContainer}>
-                    <Text style={styles.title}>Mosh Hamedani</Text>
-                    <Text style={styles.subTitle}>programmingwithmosh@gmail.com</Text>
+                {/* <View style={styles.profileContainer}>
+                    <Image style={styles.img} source={require('../assets/mosh.jpg')} />
+                    <View style={styles.innerContainer}>
+                        <Text style={styles.title}>Mosh Hamedani</Text>
+                        <Text style={styles.subTitle}>programmingwithmosh@gmail.com</Text>
+                    </View>
                 </View> */}
-                </View>
+
+                <ListItem
+                    image={require('../assets/mosh.jpg')}
+                    title={user.name}
+                    description={user.email}
+                />
 
                 <View style={styles.optionsContainer}>
                     <FlatList
@@ -83,7 +89,7 @@ function MyAccountScreen({ navigation }) {
                     <ListItem
                         title={'Log Out'}
                         IconComponent={<Icon name={'logout'} backgroundColor={'#ffe66d'} />}
-                        onPress={handlePress}
+                        onPress={handleLogout}
                     />
                 </View>
                 {/* <View style={styles.optionsContainer}>

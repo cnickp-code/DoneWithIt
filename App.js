@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import {
   View,
@@ -9,6 +9,8 @@ import {
   TextInput,
   Switch
 } from 'react-native';
+import { AppLoading } from 'expo';
+
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import ViewImageScreen from './app/screens/ViewImageScreen';
 import MessagesScreen from './app/screens/MessagesScreen';
@@ -41,8 +43,8 @@ import AppNavigator from './app/navigation/AppNavigator';
 import navigationTheme from './app/navigation/navigationTheme';
 import OfflineTest from './OfflineTest';
 import OfflineNotice from './app/components/OfflineNotice/OfflineNotice';
-
-// <Heading>My Heading</Heading>
+import AuthContext from './app/auth/context';
+import authStorage from './app/auth/storage';
 
 const categories = [
   { label: 'Furniture', value: 1 },
@@ -55,6 +57,26 @@ export default function App() {
   const [firstName, setFirstName] = useState('');
   const [isNew, setIsNew] = useState(false);
   const [category, setCategory] = useState();
+
+  const [user, setUser] = useState();
+  const [isReady, setIsReady] = useState(false);
+
+  const restoreUser = async () => {
+    const user = await authStorage.getUser();
+
+    if(user) {
+      setUser(user);
+    }
+  }
+
+  if(!isReady) {
+    return <AppLoading startAsync={restoreUser} onFinish={() => setIsReady(true)} />
+  }
+
+  const contextValue = {
+    user,
+    setUser
+  }
 
   return (
     // <WelcomeScreen />
@@ -138,12 +160,19 @@ export default function App() {
     // <ListingEditScreen />
 
     // <Test2 />
-    <>
+    // <ListItem
+    //   image={require('./app/assets/mosh.jpg')}
+    //   title={'Mosh Hamedani'}
+    //   description={'programmingwithmosh@gmail.com'}
+    // />
+
+
+    <AuthContext.Provider value={contextValue}>
       <OfflineNotice />
       <NavigationContainer theme={navigationTheme}>
-        <AppNavigator />
+        {user ? <AppNavigator /> : <AuthNavigator />}
       </NavigationContainer>
-    </>
+    </AuthContext.Provider>
 
     // <OfflineTest />
 

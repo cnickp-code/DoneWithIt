@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         marginLeft: 'auto',
         marginRight: 'auto',
-        elevation: 5,
+        // elevation: 5,
     },
     buttonText: {
         fontSize: 20,
