@@ -47,6 +47,7 @@ import AuthContext from './app/auth/context';
 import authStorage from './app/auth/storage';
 import { navigationRef } from './app/navigation/rootNavigation';
 import NotificationsTest from './NotificationsTest';
+import GyroTest from './GyroTest';
 
 const categories = [
   { label: 'Furniture', value: 1 },
@@ -170,12 +171,14 @@ export default function App() {
 
     // <NotificationsTest />
 
-    <AuthContext.Provider value={contextValue}>
-      <OfflineNotice />
-      <NavigationContainer ref={navigationRef} theme={navigationTheme}>
-        {user ? <AppNavigator /> : <AuthNavigator />}
-      </NavigationContainer>
-    </AuthContext.Provider>
+    // <AuthContext.Provider value={contextValue}>
+    //   <OfflineNotice />
+    //   <NavigationContainer ref={navigationRef} theme={navigationTheme}>
+    //     {user ? <AppNavigator /> : <AuthNavigator />}
+    //   </NavigationContainer>
+    // </AuthContext.Provider>
+
+    <GyroTest />
 
     // <OfflineTest />
 
