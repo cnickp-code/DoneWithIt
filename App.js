@@ -45,6 +45,8 @@ import OfflineTest from './OfflineTest';
 import OfflineNotice from './app/components/OfflineNotice/OfflineNotice';
 import AuthContext from './app/auth/context';
 import authStorage from './app/auth/storage';
+import { navigationRef } from './app/navigation/rootNavigation';
+import NotificationsTest from './NotificationsTest';
 
 const categories = [
   { label: 'Furniture', value: 1 },
@@ -166,10 +168,11 @@ export default function App() {
     //   description={'programmingwithmosh@gmail.com'}
     // />
 
+    // <NotificationsTest />
 
     <AuthContext.Provider value={contextValue}>
       <OfflineNotice />
-      <NavigationContainer theme={navigationTheme}>
+      <NavigationContainer ref={navigationRef} theme={navigationTheme}>
         {user ? <AppNavigator /> : <AuthNavigator />}
       </NavigationContainer>
     </AuthContext.Provider>

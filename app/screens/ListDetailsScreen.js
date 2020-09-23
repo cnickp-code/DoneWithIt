@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
 import { Image } from 'react-native-expo-image-cache';
+import ContactSellerForm from '../components/ContactSellerForm/ContactSellerForm';
 import ListItem from '../components/ListItem/ListItem';
 
 import colors from '../config/colors';
@@ -9,7 +10,11 @@ function ListDetails(props) {
     const listing = props.route.params;
 
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView
+            // behavior="position"
+            style={styles.container}
+            // keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 100}
+        >
             {/* <Image 
                 resizeMode='cover'
                 style={styles.img}
@@ -34,7 +39,8 @@ function ListDetails(props) {
                 title={"Mosh Hamedani"}
                 description={"5 Listings"}
             />
-        </View>
+            {/* <ContactSellerForm listing={listing} /> */}
+        </KeyboardAvoidingView>
     );
 }
 
